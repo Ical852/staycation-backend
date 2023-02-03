@@ -1,0 +1,40 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Booking</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Member Name</th>
+                        <th>Bank Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% booking.map((data, index) => { %>
+                        <tr>
+                            <td><%= index+1 %></td>
+                            <td><%= data.bookingStartDate.toLocaleString().split(',')[0] %> s/d <%= data.bookingStartDate.toLocaleString().split(',')[0] %></td>
+                            <td><%= data.itemId.title %></td>
+                            <td><%= data.memberId.firstName %> <%= data.memberId.lastName %></td>
+                            <td><%= data.payments.bankFrom %></td>
+                            <td><%= data.payments.status %></td>
+                            <td>
+                                <a href="/admin/booking/<%= data.id %> " type="button" class="btn btn-info button-detail d-inline"
+                                    data-id="<%= data.id %>" data-name="<%= data.name %> ">
+                                    <i class="fa fa-info-circle"></i> Detail
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal fade" id="editmodalactivity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Feature</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="/admin/item/update/activity" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control name" id="name" aria-describedby="emailHelp"
+                            placeholder="Enter Bank Name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <input type="text" class="form-control type" id="type" aria-describedby="emailHelp"
+                            placeholder="Enter Type" name="type" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control image" id="image" aria-describedby="emailHelp"
+                            placeholder="Upload Proof" name="image">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="id" class="id">
+                    <input type="hidden" name="itemId" id="itemId" value="<%= itemId %>">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

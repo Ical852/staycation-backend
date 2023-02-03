@@ -1,0 +1,39 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <button type="button" class="btn btn-primary fa fa-plus-square" data-toggle="modal" data-target="#addmodal">
+            Add Category
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <% category.forEach((data, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= data.name %></td>
+                        <td>
+                            <a href="javascript:void()" 
+                                type="button" 
+                                class="btn btn-success fa fa-edit button-update d-inline"
+                                data-id="<%= data.id %>" data-name="<%= data.name %> ">
+                                Edit
+                            </a>
+                            <form action="/admin/category/<%= data.id %>?_method=DELETE " method="post" class="d-inline">
+                                <button class="btn btn-danger fas fa-trash-alt" type="submit" onclick="return confirm(`Delete <%= data.name %> ?`)">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %> 
+            </table>
+        </div>
+    </div>
+</div>

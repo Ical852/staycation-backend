@@ -1,0 +1,18 @@
+<div class="tab-pane fade show active" id="show-image" role="tabpanel" aria-labelledby="home-tab">
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data Image Item</h6>
+        </div>
+        <div class="row px-3">
+            <% item.imageId.forEach(data => { %>
+            <div class="col-4">
+                <div class="card shadow mb-4 mt-2">
+                    <div class="card-body">
+                        <img src="http://localhost:8000/<%= data.imageUrl %> " alt="image" style="width: 100%;">
+                        </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>

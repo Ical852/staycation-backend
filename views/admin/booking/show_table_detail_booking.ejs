@@ -1,0 +1,64 @@
+<div class="tab-pane show active" id="show-activity">
+    <a href="/admin/booking">
+        <button class="btn btn-info">
+            <i class="fa fa-chevron-left"></i> Back
+        </button>
+    </a>
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detail Booking Data</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="http://localhost:8000/<%= booking.payments.proofPayment %> " alt="image" style="width: 100%;">
+                    <% if (booking.payments.status == 'Proses') { %>
+                        <div class="row px-5 mt-3">
+                            <form action="/admin/booking/confirm/<%= booking.id %>" method="post" >
+                                <button class="btn btn-success" type="submit"
+                                    onclick="return confirm(`Confirm ?`)">
+                                    <i class="fa fa-check"></i> Confirm
+                                </button>
+                            </form>
+                            <form action="/admin/booking/reject/<%= booking.id %>" method="post" class="ml-3">
+                                <button class="btn btn-danger" type="submit" onclick="return confirm(`Reject ?`)">
+                                    <i class="fa fa-times"></i> Reject
+                                </button>
+                            </form>
+                        </div>
+                    <% } else { %>
+                        <div class="row px-5 mt-3">
+                            <form action="/admin/booking/process/<%= booking.id %>" method="post">
+                                <button class="btn btn-primary" type="submit" onclick="return confirm(`Back to Process ?`)">
+                                    <i class="fa fa-check"></i> Back to Process
+                                </button>
+                            </form>
+                        </div>
+                    <% } %> 
+                </div>
+                <div class="col-md-8">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Member Name</th>
+                                    <th>Total Bayar</th>
+                                    <th>Bank From</th>
+                                    <th>Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><%= booking.memberId.firstName %> <%= booking.memberId.lastName %></td>
+                                    <td>$ <%= booking.total %></td>
+                                    <td><%= booking.payments.bankFrom %></td>
+                                    <td><%= booking.itemId.title %> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

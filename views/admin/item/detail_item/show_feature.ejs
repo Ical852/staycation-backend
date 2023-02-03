@@ -1,0 +1,71 @@
+<div class="tab-pane fade show active" id="show-feature" role="tabpanel" aria-labelledby="home-tab">
+    <div class="card shadow mb-4 mt-3">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Feature Item</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <form method="post" action="/admin/item/add/feature" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                placeholder="Enter Name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Quantity</label>
+                            <input type="number" class="form-control" id="qty" aria-describedby="emailHelp"
+                                placeholder="Enter Quantity" name="qty" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Image</label>
+                            <input type="file" class="form-control" id="image" aria-describedby="emailHelp" placeholder="Upload Proof"
+                                name="image" required>
+                        </div>
+                        <input type="hidden" name="itemId" id="itemId" value="<%= itemId %>">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary text-center">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% feature.map((data, index) => { %>
+                                    <tr>
+                                        <td><%= index+1 %> </td>
+                                        <td><%= data.name %> </td>
+                                        <td><%= data.qty %> </td>
+                                        <td><img src="http://localhost:8000/<%= data.imageUrl %> " alt=""></td>
+                                        <td>
+                                            <a href="javascript:void()" type="button" class="btn btn-success fa fa-edit button-feature-update d-inline"
+                                                data-id="<%= data.id %>" data-qty="<%= data.qty %>" data-name="<%= data.name %>">
+                                                Edit
+                                            </a>
+                                            <form action="/admin/item/<%= itemId %>/feature/<%= data.id %>?_method=DELETE" method="post" class="d-inline">
+                                                <button class="btn btn-danger fas fa-trash-alt" type="submit"
+                                                    onclick="return confirm(`Delete <%= data.name %> ?`)">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% }) %> 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
